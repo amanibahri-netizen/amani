@@ -1,0 +1,211 @@
+%-----------------------------------------------------------------------------
+%  CV — Amani Bahri  |  une page, pdfLaTeX
+%  Photo : placer "amani.jpg" dans le même dossier que ce fichier.
+%  Sans photo, un cadre gris s'affiche à la place et le document compile quand même.
+%-----------------------------------------------------------------------------
+\documentclass[a4paper,9pt]{extarticle}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=13mm,top=12mm,bottom=10mm]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[tracking=true]{microtype}
+
+% Police : Fira Sans si disponible (Overleaf), sinon Helvetica.
+\IfFileExists{FiraSans.sty}{%
+  \usepackage[sfdefault,scaled=0.96]{FiraSans}%
+  \IfFileExists{FiraMono.sty}{\usepackage[scaled=0.88]{FiraMono}}{}%
+}{%
+  \usepackage{helvet}\renewcommand{\familydefault}{\sfdefault}%
+}
+
+%------------------------------------------------  couleurs
+\definecolor{ink}{HTML}{0E1A24}
+\definecolor{soft}{HTML}{31434F}
+\definecolor{muted}{HTML}{657C88}
+\definecolor{accent}{HTML}{0F6E63}
+\definecolor{brass}{HTML}{9A7212}
+\definecolor{line}{HTML}{D3DDE2}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\color{soft}
+
+%------------------------------------------------  macros
+% titre de rubrique
+\newcommand{\cvsection}[1]{%
+  \vspace{2.2mm}%
+  {\bfseries\scriptsize\color{accent}\textls[160]{#1}}\\[1.1mm]
+  {\color{line}\rule{\linewidth}{0.5pt}}\\[1.2mm]}
+
+% intitulé / structure / date
+\newcommand{\cventry}[3]{%
+  {\color{ink}\bfseries\normalsize #1}\\[0.4mm]
+  {\color{accent}\bfseries\small #2}\\[0.3mm]
+  {\scriptsize\color{muted}#3}\\[0.8mm]}
+
+% liste à puces
+\newenvironment{cvlist}
+  {\begin{itemize}[leftmargin=3.4mm,labelsep=1.6mm,itemsep=0.45mm,topsep=0.6mm,
+                   parsep=0pt,label={\color{brass}\textendash}]\footnotesize}
+  {\end{itemize}\vspace{1.2mm}}
+
+% groupe de compétences
+\newcommand{\skillgroup}[2]{%
+  {\color{ink}\bfseries\small #1}\\[0.2mm]{\footnotesize #2}\\[1.4mm]}
+
+% attestation / diplôme
+\newcommand{\credential}[2]{%
+  {\color{ink}\bfseries\small #1}\\[0.2mm]{\scriptsize\color{muted}#2}\\[1.3mm]}
+
+% langue
+\newcommand{\lang}[2]{{\color{ink}\bfseries\small #1}\ {\small\color{muted}---}\ {\footnotesize #2}\\[0.6mm]}
+
+%=============================================================================
+\begin{document}
+
+%------------------------------------------------  en-tête
+\begin{minipage}[b]{0.755\textwidth}
+  {\color{ink}\fontsize{26}{28}\selectfont\bfseries AMANI BAHRI}\\[2.6mm]
+  {\color{accent}\bfseries\small Informatique de gestion \& informatique financière ---
+   gestion des données, e-business, IA générative et agentique}\\[2.4mm]
+  {\scriptsize\color{muted}%
+   \href{mailto:amanibahri33@gmail.com}{amanibahri33@gmail.com}\ \ \textperiodcentered\ \
+   +216 92 980 252\ \ \textperiodcentered\ \ Manouba, Tunisie\ \ \textperiodcentered\ \
+   portfolio (à définir)\ \ \textperiodcentered\ \ LinkedIn (à définir)}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.205\textwidth}
+  \raggedleft
+  \setlength{\fboxsep}{0pt}\setlength{\fboxrule}{0.5pt}
+  \IfFileExists{amani.jpg}
+    {\fcolorbox{line}{white}{\includegraphics[width=26mm,height=32mm,keepaspectratio]{amani.jpg}}}
+    {\fcolorbox{line}{line!25}{\parbox[b][32mm][c]{26mm}{\centering
+      {\color{muted}\ttfamily\scriptsize amani.jpg}}}}
+\end{minipage}
+
+\vspace{1.2mm}
+{\color{ink}\rule{\linewidth}{0.9pt}}\\[2.2mm]
+
+%------------------------------------------------  profil
+{\footnotesize
+Diplômée en informatique de gestion, spécialité e-business, je travaille à l'intersection du
+métier et de la technique : modéliser un processus de gestion --- achats, stock, facturation,
+traçabilité --- puis le traduire en base de données propre et en application web utilisable.
+Six mois en industrie pharmaceutique m'ont montré ce qu'exige un environnement réglementé :
+des données justes, des procédures suivies, une traçabilité qui tient à l'audit. J'intègre l'IA
+générative et agentique dans mon travail quotidien ; je maîtrise très bien ces outils et je m'en
+sers pour viser la perfection sur chaque livrable.\par}
+
+\vspace{1.5mm}
+
+%------------------------------------------------  deux colonnes
+\begin{minipage}[t]{0.575\textwidth}
+
+\cvsection{EXPÉRIENCE}
+
+\cventry{Stage en développement web}{SQLI --- Manouba, Tunisie}{(à définir)}
+\footnotesize Intégrée à une équipe agile, participation au cycle complet de plusieurs applications web :
+de la compréhension du besoin jusqu'à la livraison.
+\begin{cvlist}
+  \item Conception et développement de fonctionnalités d'applications web, en binôme avec des
+        développeurs seniors.
+  \item Modélisation, création et manipulation de bases de données : schémas, requêtes SQL,
+        jeux de données de test.
+  \item Participation aux rituels agiles --- points quotidiens, revues de sprint, estimation
+        des tâches.
+  \item Tests fonctionnels et correction d'anomalies avant mise en production.
+\end{cvlist}
+
+\cventry{Stage pratique en environnement industriel}{Industrie pharmaceutique --- Tunisie}{6 mois \textperiodcentered\ (à définir)}
+\footnotesize Un site de production où chaque donnée saisie engage la conformité du lot.
+\begin{cvlist}
+  \item Saisie, contrôle et suivi de données opérationnelles quotidiennes dans le respect des
+        procédures qualité.
+  \item Application stricte des normes et procédures internes ; compréhension des exigences de
+        traçabilité par lot.
+  \item Coordination avec les équipes de production et de qualité sur les tâches opérationnelles.
+  \item Vision concrète des besoins métier d'un ERP industriel : lots, péremptions, stocks,
+        conformité.
+\end{cvlist}
+
+\cvsection{ENGAGEMENT ASSOCIATIF}
+
+\cventry{Membre de l'équipe projet}{Enactus --- club universitaire}{(à définir)}
+\begin{cvlist}
+  \item Travail en équipe pluridisciplinaire --- profils gestion, communication et technique.
+  \item Préparation et présentation du projet devant un jury ; défense des choix et des chiffres.
+\end{cvlist}
+
+\cvsection{PROJET}
+
+\cventry{Traçabilité des lots \& alertes de péremption}{Projet personnel}{En cours de développement}
+{\footnotesize Module de gestion pour distributeurs pharmaceutiques : suivi des lots, des dates de
+péremption et des mouvements de stock, avec alertes automatiques avant expiration. Au-dessus,
+une couche d'interrogation en langage naturel, pour interroger les données sans écrire de SQL.\par}
+\vspace{1mm}
+{\scriptsize\color{muted}Odoo \textperiodcentered\ SQL \textperiodcentered\ Python
+\textperiodcentered\ API Claude}
+
+\cvsection{FORMATION}
+
+{\color{ink}\bfseries\small Licence en informatique de gestion}\\[0.2mm]
+{\color{accent}\bfseries\small Spécialité e-business \textperiodcentered\ 3 ans}\\[0.2mm]
+{\scriptsize\color{muted}Manouba, Tunisie \textperiodcentered\ (à définir)}\\[2mm]
+\credential{Baccalauréat --- section informatique}{Tunisie \textperiodcentered\ (à définir)}
+
+\end{minipage}\hfill
+\begin{minipage}[t]{0.395\textwidth}
+
+\cvsection{COMPÉTENCES}
+
+\skillgroup{Métier \& SI}{Processus achats, stock, facturation \textperiodcentered\ Modélisation
+MERISE / UML \textperiodcentered\ Cahier des charges \& recette \textperiodcentered\ Reporting
+\& tableaux de bord \textperiodcentered\ E-business}
+
+\skillgroup{Bases de données}{Conception de schémas relationnels \textperiodcentered\ SQL :
+requêtes, jointures, agrégats \textperiodcentered\ Import, nettoyage et fiabilisation
+\textperiodcentered\ Tableurs avancés \textperiodcentered\ SGBD (à définir)}
+
+\skillgroup{Applications web}{HTML, CSS, JavaScript \textperiodcentered\ Applications de gestion
+(CRUD) \textperiodcentered\ Git \& GitHub \textperiodcentered\ Méthodologie agile / Scrum
+\textperiodcentered\ Framework (à définir)}
+
+\skillgroup{IA générative \& agentique}{Prompting structuré \& itératif \textperiodcentered\
+Vérification des sorties du modèle \textperiodcentered\ Claude \& API Anthropic
+\textperiodcentered\ Automatisation de tâches répétitives \textperiodcentered\ Notions d'agents
+\& de MCP}
+
+\cvsection{ATTESTATIONS}
+
+\credential{Claude 101}{Anthropic Academy \textperiodcentered\ (à définir)}
+\credential{AI Fluency: Framework \& Foundations}{Anthropic Academy \textperiodcentered\ (à définir)}
+\credential{Claude Platform 101}{Anthropic Academy \textperiodcentered\ (à définir)}
+{\scriptsize\color{muted}Attestations de réussite délivrées à l'issue de l'évaluation finale de
+chaque cours.\par}
+
+\cvsection{LANGUES}
+
+\lang{Arabe}{langue maternelle}
+\lang{Français}{courant, langue de travail}
+\lang{Anglais}{intermédiaire, en progression}
+\lang{Espagnol}{notions}
+
+\cvsection{RECHERCHE}
+
+{\footnotesize Premier poste en informatique de gestion : développement d'applications de gestion,
+assistanat consultant ERP, données ou support applicatif. Grand Tunis, présentiel ou hybride.
+Disponible immédiatement.\par}
+
+\end{minipage}
+
+%------------------------------------------------  citation
+\vfill
+{\color{line}\rule{\linewidth}{0.5pt}}\\[2mm]
+\centerline{\color{ink}\small\bfseries
+  «\,Aujourd'hui, avec ces outils entre les mains, l'à-peu-près n'est plus une contrainte
+  --- c'est un choix.\,»}
+
+\end{document}
